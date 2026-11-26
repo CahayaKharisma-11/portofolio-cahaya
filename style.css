@@ -1,0 +1,120 @@
+/* ==========================================================================
+   CAHAYA KHARISMA AULIA — Portfolio Stylesheet
+   Palette: Warm Cream, Soft Taupe, Dusty Blue, Slate Blue
+   ========================================================================== */
+
+:root {
+  --color-warm-cream: #F7F3EB;
+  --color-soft-cream: #EFE9DF;
+  --color-dusty-blue: #6B8E9F;
+  --color-dusty-blue-dark: #577888;
+  --color-dusty-blue-light: #E3ECEF;
+  --color-soft-taupe: #B6ACA2;
+  --color-soft-taupe-light: #D8CFC6;
+  --color-slate-blue: #3B5266;
+  --color-slate-blue-deep: #2C3E4F;
+}
+
+/* Base Smooth Scroll & Selection */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+::selection {
+  background-color: var(--color-dusty-blue);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-warm-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-soft-taupe);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dusty-blue);
+}
+
+/* Language Switcher States */
+.lang-btn-active {
+  background-color: var(--color-dusty-blue);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(44, 62, 79, 0.14);
+}
+
+.lang-btn-inactive {
+  background-color: transparent;
+  color: var(--color-slate-blue);
+}
+
+.lang-btn-inactive:hover {
+  color: var(--color-slate-blue-deep);
+}
+
+/* Decorative Horizontal Divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-soft-taupe-light) 50%,
+    transparent 100%
+  );
+}
+
+/* Smooth Image Hover Zoom inside Project & Certificate Cards */
+.media-zoom {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .media-zoom {
+  transform: scale(1.02);
+}
+
+/* Subtle Hover Lift for Skill List Items */
+.skill-item {
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.skill-item:hover {
+  transform: translateX(4px);
+  border-color: var(--color-dusty-blue);
+  background-color: #ffffff;
+}
+
+/* Lightbox Modal Entrance Animation */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-panel {
+  animation: modalFadeIn 0.22s ease-out forwards;
+}
+
+/* Toast Notification States */
+.toast-hidden {
+  opacity: 0;
+  transform: translate(-50%, 12px);
+}
+
+.toast-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAHAYA KHARISMA AULIA — Portfolio</title>
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN & Custom Palette Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            warmCream: '#F7F3EB',
+            softCream: '#EFE9DF',
+            dustyBlue: {
+              DEFAULT: '#6B8E9F',
+              dark: '#577888',
+              light: '#E3ECEF',
+            },
+            softTaupe: {
+              DEFAULT: '#B6ACA2',
+              light: '#D8CFC6',
+            },
+            slateBlue: {
+              DEFAULT: '#3B5266',
+              deep: '#2C3E4F',
+            },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          boxShadow: {
+            soft: '0 10px 30px -10px rgba(44, 62, 79, 0.08)',
+            card: '0 4px 20px -2px rgba(44, 62, 79, 0.06)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-warmCream text-slateBlue font-sans antialiased overflow-x-hidden">
+
+  <!-- ==================== STICKY TOP NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 bg-warmCream/90 backdrop-blur-md border-b border-softTaupe-light transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <a href="#home" class="font-serif font-bold text-base sm:text-lg tracking-wide text-slateBlue-deep hover:text-dustyBlue transition-colors truncate">
+        CAHAYA KHARISMA AULIA
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slateBlue">
+        <a href="#about" data-i18n="nav_about" class="nav-link hover:text-dustyBlue transition-colors py-1">Tentang Saya</a>
+        <a href="#projects" data-i18n="nav_projects" class="nav-link hover:text-dustyBlue transition-colors py-1">Proyek</a>
+        <a href="#skills" data-i18n="nav_skills" class="nav-link hover:text-dustyBlue transition-colors py-1">Keahlian</a>
+        <a href="#certificate" data-i18n="nav_certificate" class="nav-link hover:text-dustyBlue transition-colors py-1">Sertifikat UTK</a>
+        <a href="#contact" data-i18n="nav_contact" class="nav-link hover:text-dustyBlue transition-colors py-1">Kontak</a>
+      </nav>
+
+      <!-- Language Toggle (ID | EN) & Mobile Hamburger -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div role="group" aria-label="Language Switcher" class="inline-flex items-center bg-softCream border border-softTaupe-light rounded-full p-1">
+          <button
+            type="button"
+            id="btn-lang-id"
+            onclick="setLanguage('id')"
+            class="lang-btn lang-btn-active px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer"
+          >
+            ID
+          </button>
+          <button
+            type="button"
+            id="btn-lang-en"
+            onclick="setLanguage('en')"
+            class="lang-btn lang-btn-inactive px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer"
+          >
+            EN
+          </button>
+        </div>
+
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          aria-label="Toggle Menu"
+          class="md:hidden p-2.5 rounded-xl bg-softCream border border-softTaupe-light text-slateBlue-deep hover:bg-softTaupe-light/40 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden bg-warmCream border-b border-softTaupe-light px-4 pt-2 pb-5 space-y-1">
+      <a href="#about" data-i18n="nav_about" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slateBlue-deep hover:bg-softCream">Tentang Saya</a>
+      <a href="#projects" data-i18n="nav_projects" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slateBlue-deep hover:bg-softCream">Proyek</a>
+      <a href="#skills" data-i18n="nav_skills" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slateBlue-deep hover:bg-softCream">Keahlian</a>
+      <a href="#certificate" data-i18n="nav_certificate" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slateBlue-deep hover:bg-softCream">Sertifikat UTK</a>
+      <a href="#contact" data-i18n="nav_contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slateBlue-deep hover:bg-softCream">Kontak</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section id="home" class="py-12 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Left Column: Profile Photo (pp.jpeg) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-64 sm:w-72 md:w-80">
+            <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-softTaupe-light/70 border border-softTaupe"></div>
+
+            <div class="relative aspect-[4/5] w-full rounded-3xl overflow-hidden bg-softCream border-2 border-softTaupe-light shadow-soft">
+              <img
+                src="pp.jpeg"
+                alt="Foto Profil Cahaya Kharisma Aulia"
+                class="w-full h-full object-cover object-center"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              />
+
+              <!-- Fallback jika pp.jpeg belum tersedia -->
+              <div class="hidden w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-softCream to-dustyBlue-light p-6 text-center">
+                <svg class="w-36 h-36 text-dustyBlue mb-3" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="80" cy="80" r="74" fill="#F7F3EB" stroke="#B6ACA2" stroke-width="2" stroke-dasharray="4 4"/>
+                  <circle cx="80" cy="60" r="26" fill="#6B8E9F"/>
+                  <path d="M36 132C36 108.804 55.6995 90 80 90C104.301 90 124 108.804 124 132" fill="#3B5266"/>
+                  <path d="M54 56C54 41.6406 65.6406 30 80 30C94.3594 30 106 41.6406 106 56" stroke="#2C3E4F" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+                <span class="text-xs font-semibold tracking-wider uppercase text-slateBlue-deep">pp.jpeg</span>
+                <span data-i18n="photo_hint" class="text-[11px] text-slateBlue/80 mt-1">Foto Profil Cahaya Kharisma Aulia</span>
+              </div>
+            </div>
+
+            <div class="absolute -bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-sm border border-softTaupe-light rounded-2xl px-4 py-2.5 shadow-card flex items-center justify-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-dustyBlue shrink-0"></span>
+              <span class="text-xs font-semibold text-slateBlue-deep tracking-wide">SMKN 1 Blitar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Welcoming Headline & Intro -->
+        <div class="lg:col-span-7 text-center lg:text-left pt-4 lg:pt-0">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dustyBlue-light border border-dustyBlue/30 text-slateBlue-deep text-xs sm:text-sm font-semibold mb-4">
+            <span class="w-2 h-2 rounded-full bg-dustyBlue"></span>
+            <span data-i18n="hero_welcome">Selamat Datang di Portofolio Saya</span>
+          </div>
+
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-[3.25rem] font-bold text-slateBlue-deep leading-tight tracking-tight">
+            <span data-i18n="hero_greeting" class="block text-xl sm:text-2xl font-sans font-semibold text-dustyBlue mb-2">Halo, Saya</span>
+            CAHAYA KHARISMA AULIA
+          </h1>
+
+          <p data-i18n="hero_role" class="mt-4 text-base sm:text-lg font-semibold text-slateBlue">
+            Siswi SMKN 1 Blitar
+          </p>
+
+          <p data-i18n="hero_desc" class="mt-4 text-sm sm:text-base text-slateBlue/90 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Selamat datang di ruang digital pribadi saya. Tempat saya mendokumentasikan perjalanan belajar di bidang sistem informasi, pengelolaan database, serta pengembangan aplikasi kasir yang terstruktur dan mudah digunakan.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
+            <a
+              href="#projects"
+              data-i18n="hero_cta_primary"
+              class="px-6 py-3.5 rounded-xl bg-dustyBlue hover:bg-dustyBlue-dark text-white text-sm font-semibold shadow-soft transition-all"
+            >
+              Lihat Proyek Saya
+            </a>
+            <a
+              href="#contact"
+              data-i18n="hero_cta_secondary"
+              class="px-6 py-3.5 rounded-xl bg-white hover:bg-softCream text-slateBlue-deep border border-softTaupe-light text-sm font-semibold transition-all"
+            >
+              Hubungi Saya
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- ==================== 2. ABOUT ME SECTION ==================== -->
+    <section id="about" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="bg-white rounded-3xl border border-softTaupe-light p-6 sm:p-10 lg:p-12 shadow-card">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-softTaupe-light/70">
+            <div>
+              <span data-i18n="about_eyebrow" class="text-xs font-bold uppercase tracking-widest text-dustyBlue">Profil Singkat</span>
+              <h2 data-i18n="about_title" class="font-serif text-2xl sm:text-3xl font-bold text-slateBlue-deep mt-1">Tentang Saya</h2>
+            </div>
+            <div class="inline-flex items-center gap-2 self-start md:self-auto px-4 py-2 rounded-2xl bg-softCream border border-softTaupe-light text-xs font-semibold text-slateBlue-deep">
+              <svg class="w-4 h-4 text-dustyBlue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              </svg>
+              <span>SMKN 1 Blitar</span>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-4 text-sm sm:text-base text-slateBlue leading-relaxed">
+            <p data-i18n="about_p1">
+              Halo! Saya <strong class="text-slateBlue-deep font-semibold">Cahaya Kharisma Aulia</strong>, seorang <strong class="text-slateBlue-deep font-semibold">siswi SMKN 1 Blitar</strong> yang memiliki ketertarikan mendalam pada pengelolaan data terstruktur dan pengembangan sistem aplikasi praktis seperti sistem kasir dan basis data.
+            </p>
+            <p data-i18n="about_p2">
+              Melalui berbagai proyek pembelajaran di sekolah, saya terbiasa merancang struktur database yang rapi, membangun alur transaksi aplikasi kasir yang efisien, serta terus mengasah ketelitian dan tanggung jawab dalam menyelesaikan setiap tugas teknis.
+            </p>
+          </div>
+
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-warmCream border border-softTaupe-light flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-dustyBlue/15 text-dustyBlue flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                </svg>
+              </div>
+              <div>
+                <h3 data-i18n="about_card1_title" class="text-sm font-bold text-slateBlue-deep">Siswi SMKN 1 Blitar</h3>
+                <p data-i18n="about_card1_desc" class="text-xs sm:text-sm text-slateBlue/90 mt-1">Berfokus pada ketelitian sistem, pengolahan database, dan solusi aplikasi kasir.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-warmCream border border-softTaupe-light flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-dustyBlue/15 text-dustyBlue flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 data-i18n="about_card2_title" class="text-sm font-bold text-slateBlue-deep">Pengembangan Sistem Informasi</h3>
+                <p data-i18n="about_card2_desc" class="text-xs sm:text-sm text-slateBlue/90 mt-1">Membangun aplikasi kasir dan struktur database relasional yang terorganisir.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. PROJECTS SECTION ==================== -->
+    <section id="projects" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-softCream/60 border-y border-softTaupe-light/60">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span data-i18n="projects_eyebrow" class="text-xs font-bold uppercase tracking-widest text-dustyBlue">Karya & Implementasi</span>
+          <h2 data-i18n="projects_title" class="font-serif text-2xl sm:text-4xl font-bold text-slateBlue-deep mt-2">Proyek Pilihan</h2>
+          <p data-i18n="projects_subtitle" class="text-sm sm:text-base text-slateBlue mt-3">
+            Beberapa proyek sistem informasi yang telah saya kerjakan, berfokus pada pencatatan transaksi kasir dan struktur manajemen database.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Project 1: Sistem Kasir (kasir.jpeg) -->
+          <article class="group bg-white rounded-3xl border border-softTaupe-light overflow-hidden shadow-card hover:shadow-soft transition-all flex flex-col">
+            <div
+              onclick="openLightbox('kasir-media', 'proj1_title')"
+              class="relative aspect-[16/10] w-full bg-warmCream border-b border-softTaupe-light overflow-hidden cursor-pointer"
+              title="Klik untuk memperbesar"
+            >
+              <div id="kasir-media" class="w-full h-full">
+                <img
+                  src="kasir.jpeg"
+                  alt="Proyek Sistem Kasir"
+                  class="media-zoom w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                />
+                <div class="hidden w-full h-full bg-gradient-to-br from-warmCream via-softCream to-dustyBlue-light p-6 flex flex-col justify-between">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-softTaupe"></span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-dustyBlue"></span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-slateBlue"></span>
+                    </div>
+                    <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/80 text-slateBlue-deep border border-softTaupe-light">kasir.jpeg</span>
+                  </div>
+                  <svg class="w-full h-36 my-auto" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="16" y="10" width="185" height="120" rx="12" fill="#FFFFFF" stroke="#B6ACA2" stroke-width="1.5"/>
+                    <rect x="28" y="24" width="75" height="10" rx="5" fill="#3B5266"/>
+                    <rect x="28" y="44" width="160" height="18" rx="6" fill="#F7F3EB"/>
+                    <rect x="28" y="70" width="160" height="18" rx="6" fill="#F7F3EB"/>
+                    <rect x="28" y="96" width="160" height="18" rx="6" fill="#E3ECEF"/>
+                    <rect x="212" y="10" width="92" height="120" rx="12" fill="#3B5266"/>
+                    <rect x="224" y="26" width="54" height="8" rx="4" fill="#EFE9DF" fill-opacity="0.7"/>
+                    <rect x="224" y="44" width="68" height="14" rx="5" fill="#6B8E9F"/>
+                    <rect x="224" y="92" width="68" height="24" rx="8" fill="#6B8E9F"/>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slateBlue-deep/85 text-white text-[11px] font-medium backdrop-blur-sm opacity-90 group-hover:opacity-100 transition-opacity">
+                <span data-i18n="zoom_hint">Perbesar Gambar</span>
+              </span>
+            </div>
+
+            <div class="p-6 sm:p-8 flex-1 flex flex-col">
+              <div class="flex items-center gap-2 mb-3">
+                <span data-i18n="proj1_tag" class="px-3 py-1 rounded-full bg-dustyBlue-light text-slateBlue-deep text-xs font-semibold">Aplikasi Transaksi</span>
+              </div>
+              <h3 data-i18n="proj1_title" class="font-serif text-xl sm:text-2xl font-bold text-slateBlue-deep">
+                Sistem Kasir (Point of Sale)
+              </h3>
+              <p data-i18n="proj1_desc" class="mt-3 text-sm sm:text-base text-slateBlue leading-relaxed flex-1">
+                Aplikasi kasir yang dirancang untuk mempermudah pencatatan transaksi penjualan, perhitungan total belanja secara otomatis, pengelolaan daftar barang, serta pembuatan laporan ringkas harian dengan antarmuka yang rapi dan mudah digunakan.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 2: Manajemen Database (database.jpeg) -->
+          <article class="group bg-white rounded-3xl border border-softTaupe-light overflow-hidden shadow-card hover:shadow-soft transition-all flex flex-col">
+            <div
+              onclick="openLightbox('database-media', 'proj2_title')"
+              class="relative aspect-[16/10] w-full bg-warmCream border-b border-softTaupe-light overflow-hidden cursor-pointer"
+              title="Klik untuk memperbesar"
+            >
+              <div id="database-media" class="w-full h-full">
+                <img
+                  src="database.jpeg"
+                  alt="Proyek Manajemen Database"
+                  class="media-zoom w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                />
+                <div class="hidden w-full h-full bg-gradient-to-br from-warmCream via-softCream to-dustyBlue-light p-6 flex flex-col justify-between">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-softTaupe"></span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-dustyBlue"></span>
+                      <span class="w-2.5 h-2.5 rounded-full bg-slateBlue"></span>
+                    </div>
+                    <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/80 text-slateBlue-deep border border-softTaupe-light">database.jpeg</span>
+                  </div>
+                  <svg class="w-full h-36 my-auto" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="18" y="16" width="110" height="108" rx="10" fill="#FFFFFF" stroke="#B6ACA2" stroke-width="1.5"/>
+                    <path d="M18 26C18 20.4772 22.4772 16 28 16H118C123.523 16 128 20.4772 128 26V40H18V26Z" fill="#3B5266"/>
+                    <rect x="28" y="50" width="90" height="12" rx="4" fill="#E3ECEF"/>
+                    <rect x="28" y="70" width="90" height="12" rx="4" fill="#F7F3EB"/>
+                    <rect x="28" y="90" width="90" height="12" rx="4" fill="#F7F3EB"/>
+                    <path d="M128 56H160V84H192" stroke="#6B8E9F" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="128" cy="56" r="4" fill="#6B8E9F"/>
+                    <circle cx="192" cy="84" r="4" fill="#6B8E9F"/>
+                    <rect x="192" y="16" width="110" height="108" rx="10" fill="#FFFFFF" stroke="#B6ACA2" stroke-width="1.5"/>
+                    <path d="M192 26C192 20.4772 196.477 16 202 16H292C297.523 16 302 20.4772 302 26V40H192V26Z" fill="#6B8E9F"/>
+                    <rect x="202" y="50" width="90" height="12" rx="4" fill="#F7F3EB"/>
+                    <rect x="202" y="70" width="90" height="12" rx="4" fill="#E3ECEF"/>
+                    <rect x="202" y="90" width="90" height="12" rx="4" fill="#F7F3EB"/>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slateBlue-deep/85 text-white text-[11px] font-medium backdrop-blur-sm opacity-90 group-hover:opacity-100 transition-opacity">
+                <span data-i18n="zoom_hint">Perbesar Gambar</span>
+              </span>
+            </div>
+
+            <div class="p-6 sm:p-8 flex-1 flex flex-col">
+              <div class="flex items-center gap-2 mb-3">
+                <span data-i18n="proj2_tag" class="px-3 py-1 rounded-full bg-dustyBlue-light text-slateBlue-deep text-xs font-semibold">Basis Data & Struktur</span>
+              </div>
+              <h3 data-i18n="proj2_title" class="font-serif text-xl sm:text-2xl font-bold text-slateBlue-deep">
+                Manajemen Database
+              </h3>
+              <p data-i18n="proj2_desc" class="mt-3 text-sm sm:text-base text-slateBlue leading-relaxed flex-1">
+                Perancangan dan pengelolaan struktur database relasional untuk menyimpan data secara terorganisir, menjaga integritas antar tabel, serta mempermudah proses pencarian, pembaruan, dan pelaporan data secara akurat.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. SKILLS SECTION (LIST ONLY, NO PERCENTAGES) ==================== -->
+    <section id="skills" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span data-i18n="skills_eyebrow" class="text-xs font-bold uppercase tracking-widest text-dustyBlue">Kompetensi & Kemampuan</span>
+          <h2 data-i18n="skills_title" class="font-serif text-2xl sm:text-4xl font-bold text-slateBlue-deep mt-2">Keahlian</h2>
+          <p data-i18n="skills_subtitle" class="text-sm sm:text-base text-slateBlue mt-3">
+            Rangkaian keterampilan teknis dan kemampuan kerja sama yang terus saya kembangkan selama menempuh pendidikan di SMKN 1 Blitar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Technical & System Skills -->
+          <div class="bg-white rounded-3xl border border-softTaupe-light p-6 sm:p-8 shadow-card">
+            <div class="flex items-center gap-3 pb-4 border-b border-softTaupe-light">
+              <div class="w-10 h-10 rounded-xl bg-dustyBlue text-white flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              </div>
+              <h3 data-i18n="skills_tech_heading" class="font-serif text-xl font-bold text-slateBlue-deep">Keahlian Teknis & Sistem</h3>
+            </div>
+
+            <ul class="mt-6 space-y-3.5">
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_t1" class="text-sm sm:text-base font-medium text-slateBlue-deep">Pengelolaan & Perancangan Database</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_t2" class="text-sm sm:text-base font-medium text-slateBlue-deep">Pengembangan & Operasional Sistem Kasir</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_t3" class="text-sm sm:text-base font-medium text-slateBlue-deep">Pengolahan Data & Administrasi Digital</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_t4" class="text-sm sm:text-base font-medium text-slateBlue-deep">Dasar Pengembangan Web (HTML, CSS, JavaScript)</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_t5" class="text-sm sm:text-base font-medium text-slateBlue-deep">Penyusunan Laporan & Dokumentasi Sistem</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Supporting & Collaboration Skills -->
+          <div class="bg-white rounded-3xl border border-softTaupe-light p-6 sm:p-8 shadow-card">
+            <div class="flex items-center gap-3 pb-4 border-b border-softTaupe-light">
+              <div class="w-10 h-10 rounded-xl bg-slateBlue-deep text-white flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 data-i18n="skills_org_heading" class="font-serif text-xl font-bold text-slateBlue-deep">Keterampilan Pendukung & Kerja Tim</h3>
+            </div>
+
+            <ul class="mt-6 space-y-3.5">
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_o1" class="text-sm sm:text-base font-medium text-slateBlue-deep">Ketelitian & Pemecahan Masalah</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_o2" class="text-sm sm:text-base font-medium text-slateBlue-deep">Analisis Alur Sistem & Logika Data</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_o3" class="text-sm sm:text-base font-medium text-slateBlue-deep">Kerja Sama Tim & Koordinasi Tugas</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_o4" class="text-sm sm:text-base font-medium text-slateBlue-deep">Komunikasi Efektif & Tanggung Jawab</span>
+              </li>
+              <li class="skill-item flex items-center gap-3 p-3 rounded-2xl bg-warmCream/80 border border-softTaupe-light/60">
+                <span class="w-2 h-2 rounded-full bg-dustyBlue shrink-0"></span>
+                <span data-i18n="skill_o5" class="text-sm sm:text-base font-medium text-slateBlue-deep">Manajemen Waktu & Kedisiplinan</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. CERTIFICATE SECTION (SERTIFIKAT UTK - sertif.jpeg) ==================== -->
+    <section id="certificate" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-softCream/60 border-y border-softTaupe-light/60">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span data-i18n="cert_eyebrow" class="text-xs font-bold uppercase tracking-widest text-dustyBlue">Apresiasi & Pencapaian</span>
+          <h2 data-i18n="cert_title" class="font-serif text-2xl sm:text-4xl font-bold text-slateBlue-deep mt-2">Sertifikat UTK</h2>
+          <p data-i18n="cert_subtitle" class="text-sm sm:text-base text-slateBlue mt-3">
+            Dokumentasi sertifikat pencapaian saya. Klik gambar sertifikat untuk melihat ukuran penuh.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-softTaupe-light p-4 sm:p-8 shadow-card">
+          <div
+            onclick="openLightbox('cert-media', 'cert_card_title')"
+            class="group relative aspect-[16/11] w-full rounded-2xl overflow-hidden bg-warmCream border-2 border-softTaupe-light cursor-pointer"
+          >
+            <div id="cert-media" class="w-full h-full">
+              <img
+                src="sertif.jpeg"
+                alt="Sertifikat UTK Cahaya Kharisma Aulia"
+                class="media-zoom w-full h-full object-contain bg-warmCream"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              />
+
+              <div class="hidden w-full h-full bg-warmCream p-6 sm:p-10 flex flex-col items-center justify-center text-center relative">
+                <div class="w-full h-full border-2 border-softTaupe rounded-xl p-5 sm:p-8 flex flex-col items-center justify-center relative bg-white/80">
+                  <div class="w-12 h-12 rounded-full bg-dustyBlue-light border border-dustyBlue/40 flex items-center justify-center text-dustyBlue mb-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                  <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-dustyBlue">SERTIFIKAT UTK</span>
+                  <h4 class="font-serif text-lg sm:text-2xl font-bold text-slateBlue-deep mt-2">CAHAYA KHARISMA AULIA</h4>
+                  <div class="w-24 h-0.5 bg-softTaupe-light my-3"></div>
+                  <p class="text-xs sm:text-sm text-slateBlue max-w-md">
+                    SMKN 1 Blitar
+                  </p>
+                  <span class="mt-4 text-[11px] font-medium px-3 py-1 rounded-full bg-softCream border border-softTaupe-light text-slateBlue">
+                    sertif.jpeg
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <span class="absolute bottom-3 right-3 px-3.5 py-1.5 rounded-full bg-slateBlue-deep/85 text-white text-xs font-medium backdrop-blur-sm">
+              <span data-i18n="zoom_hint">Perbesar Gambar</span>
+            </span>
+          </div>
+
+          <div class="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 data-i18n="cert_card_title" class="font-serif text-lg sm:text-xl font-bold text-slateBlue-deep">
+                Sertifikat UTK
+              </h3>
+              <p data-i18n="cert_card_desc" class="text-xs sm:text-sm text-slateBlue mt-0.5">
+                Bukti pencapaian dan partisipasi aktif dalam pengembangan kompetensi di sekolah.
+              </p>
+            </div>
+            <span class="self-start sm:self-center px-3.5 py-1.5 rounded-full bg-dustyBlue-light text-slateBlue-deep text-xs font-semibold">
+              Cahaya Kharisma Aulia
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. CONTACT SECTION ==================== -->
+    <section id="contact" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span data-i18n="contact_eyebrow" class="text-xs font-bold uppercase tracking-widest text-dustyBlue">Mari Terhubung</span>
+          <h2 data-i18n="contact_title" class="font-serif text-2xl sm:text-4xl font-bold text-slateBlue-deep mt-2">Kontak Pribadi</h2>
+          <p data-i18n="contact_subtitle" class="text-sm sm:text-base text-slateBlue mt-3">
+            Jangan ragu untuk menghubungi saya melalui email atau Instagram pribadi untuk diskusi proyek maupun pertanyaan lainnya.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Email Card -->
+          <div class="bg-white rounded-3xl border border-softTaupe-light p-6 sm:p-8 shadow-card flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-dustyBlue-light text-dustyBlue flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 data-i18n="contact_email_label" class="font-serif text-xl font-bold text-slateBlue-deep">Email Pribadi</h3>
+              <p id="email-text" class="mt-2 text-sm sm:text-base font-medium text-slateBlue break-all">
+                c.cahayakharisma11@gmail.com
+              </p>
+            </div>
+
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href="mailto:c.cahayakharisma11@gmail.com"
+                data-i18n="contact_email_btn"
+                class="flex-1 text-center px-4 py-3 rounded-xl bg-dustyBlue hover:bg-dustyBlue-dark text-white text-sm font-semibold transition-colors"
+              >
+                Kirim Email
+              </a>
+              <button
+                type="button"
+                onclick="copyEmail()"
+                data-i18n="contact_copy_btn"
+                class="px-4 py-3 rounded-xl bg-softCream hover:bg-softTaupe-light/50 text-slateBlue-deep border border-softTaupe-light text-sm font-semibold transition-colors cursor-pointer"
+              >
+                Salin
+              </button>
+            </div>
+          </div>
+
+          <!-- Personal Instagram Card -->
+          <div class="bg-white rounded-3xl border border-softTaupe-light p-6 sm:p-8 shadow-card flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-dustyBlue-light text-dustyBlue flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <h3 data-i18n="contact_ig_label" class="font-serif text-xl font-bold text-slateBlue-deep">Instagram Pribadi</h3>
+              <p class="mt-2 text-sm sm:text-base font-medium text-slateBlue">
+                @chykhrsm
+              </p>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="https://www.instagram.com/chykhrsm?evlk=NzVnZTM0M3pobmN3"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="contact_ig_btn"
+                class="block w-full text-center px-4 py-3 rounded-xl bg-slateBlue-deep hover:bg-slateBlue text-white text-sm font-semibold transition-colors"
+              >
+                Kunjungi Instagram
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slateBlue-deep text-warmCream py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-serif font-bold text-base tracking-wide">CAHAYA KHARISMA AULIA</p>
+        <p data-i18n="footer_sub" class="text-xs text-warmCream/75 mt-1">
+          Siswi SMKN 1 Blitar
+        </p>
+      </div>
+      <div class="text-xs text-warmCream/75">
+        &copy; <span id="current-year"></span> Cahaya Kharisma Aulia. <span data-i18n="footer_rights">Hak Cipta Dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== LIGHTBOX MODAL ==================== -->
+  <div
+    id="lightbox-modal"
+    onclick="closeLightbox()"
+    class="hidden fixed inset-0 z-50 bg-slateBlue-deep/85 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center"
+  >
+    <div
+      onclick="event.stopPropagation()"
+      class="modal-panel relative w-full max-w-4xl bg-warmCream rounded-3xl border border-softTaupe-light overflow-hidden shadow-2xl"
+    >
+      <div class="flex items-center justify-between px-5 py-4 bg-white border-b border-softTaupe-light">
+        <h4 id="lightbox-title" class="font-serif font-bold text-base sm:text-lg text-slateBlue-deep">Pratinjau</h4>
+        <button
+          type="button"
+          onclick="closeLightbox()"
+          aria-label="Close modal"
+          class="p-2 rounded-xl bg-softCream hover:bg-softTaupe-light/60 text-slateBlue-deep transition-colors cursor-pointer"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="lightbox-content" class="p-4 sm:p-6 max-h-[80vh] overflow-auto flex items-center justify-center bg-warmCream"></div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div
+    id="toast"
+    role="status"
+    class="toast-hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 bg-slateBlue-deep text-warmCream px-5 py-3 rounded-full shadow-lg border border-softTaupe/40 text-xs sm:text-sm font-medium flex items-center gap-2"
+  >
+    <span class="w-2 h-2 rounded-full bg-dustyBlue"></span>
+    <span id="toast-message">Email berhasil disalin!</span>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
